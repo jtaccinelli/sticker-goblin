@@ -9,7 +9,6 @@
 [environments.all]
 store = "stickergoblin.myshopify.com"
 path = "theme"
-theme = "185237799218"
 
 [environments.content]
 store = "stickergoblin.myshopify.com"
