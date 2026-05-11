@@ -9,6 +9,10 @@
  */
 {
   "current": {
+    "logo": "shopify://shop_images/row.svg",
+    "logo_height": 36,
+    "logo_height_mobile": 28,
+    "favicon": "shopify://shop_images/lettering.svg",
     "type_body_font": "geist_n4",
     "type_subheading_font": "geist_n4",
     "type_heading_font": "chivo_n7",
@@ -66,6 +70,7 @@
     "variant_button_border_width": 2,
     "variant_button_radius": 0,
     "variant_button_width": "equal-width-buttons",
+    "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -108,7 +113,7 @@
       },
       "scheme-2": {
         "settings": {
-          "background": "#f1ecf8",
+          "background": "#ffffff",
           "foreground_heading": "#2a2450",
           "foreground": "#2a2450",
           "primary": "#ae2b57",
@@ -340,9 +345,7 @@
           "selected_variant_hover_border_color": "#2a2450"
         }
       }
-    },
-    "logo_height": 36,
-    "logo_height_mobile": 28
+    }
   },
   "presets": {
     "Ritual": {
