@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "dev": "shopify theme dev --path theme/",
-    "push": "shopify theme push --path theme/",
-    "pull": "shopify theme pull --path theme/"
+    "dev": "shopify theme dev",
+    "push": "shopify theme push",
+    "pull": "shopify theme pull"
   }
 }
