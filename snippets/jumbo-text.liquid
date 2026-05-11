@@ -40,13 +40,9 @@
 
 {% capture attributes %}
   style="
-    --font-family: var(--font-{{ block_settings.font | default: 'accent'}}--family);
-    --font-weight: var(--font-{{ block_settings.font | default: 'accent'}}--weight);
-    {% if block_settings.font == 'body' %}
-      --color: var(--color-foreground);
-    {% else %}
-      --color: var(--color-foreground-heading);
-    {% endif %}
+    --font-family: var(--font-heading--family);
+    --font-weight: var(--font-heading--weight);
+    --color: var(--color-foreground-heading);
     --text-align: {{ block_settings.alignment | default: 'left' }};
     {% if block_settings.alignment == "left" %}
       --margin-left-nudge: {{nudge}};

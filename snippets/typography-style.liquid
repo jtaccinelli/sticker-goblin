@@ -59,12 +59,13 @@
         --font-size: {{ settings.font_size }};
       {%- endif -%}
     {%- endif -%}
+    {%- assign _font = settings.font | default: 'var(--font-body--family)' -%}
     {%- if settings.weight != blank -%}
       --font-weight: {{ settings.weight }};
     {% else %}
-      --font-weight: {{ settings.font | replace: 'family', 'weight' }};
+      --font-weight: {{ _font | replace: 'family', 'weight' }};
     {%- endif -%}
-    --font-family: {{ settings.font }};
+    --font-family: {{ _font }};
     --text-transform: {{ settings.case }};
     --text-wrap: {{ settings.wrap | default: 'pretty' }};
     {% if settings.type_preset == 'custom' and settings.font_size == blank %}

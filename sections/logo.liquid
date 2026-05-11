@@ -133,31 +133,6 @@
       "visible_if": "{{ settings.logo_inverse }}"
     },
     {
-      "type": "select",
-      "id": "font",
-      "label": "t:settings.font",
-      "options": [
-        {
-          "value": "body",
-          "label": "t:options.body"
-        },
-        {
-          "value": "subheading",
-          "label": "t:options.subheading"
-        },
-        {
-          "value": "heading",
-          "label": "t:options.heading"
-        },
-        {
-          "value": "accent",
-          "label": "t:options.accent"
-        }
-      ],
-      "default": "heading",
-      "visible_if": "{{ settings.logo == blank and settings.logo_inverse == blank or section.settings.inverse == false }}"
-    },
-    {
       "type": "paragraph",
       "content": "t:content.edit_logo_in_theme_settings"
     },
