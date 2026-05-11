@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "dev": "shopify theme dev",
+    "dev": "shopify theme dev -e all",
     "push": "shopify theme push",
     "pull": "shopify theme pull"
-  }
+  },
+  "packageManager": "pnpm@10.12.4"
 }
