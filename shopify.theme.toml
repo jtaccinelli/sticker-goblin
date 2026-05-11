@@ -9,12 +9,9 @@
 [environments.all]
 store = "stickergoblin.myshopify.com"
 theme = "185237799218"
-allow-live = true
 
 [environments.content]
 store = "stickergoblin.myshopify.com"
-theme = "185237799218"
-allow-live = true
 ignore = [
   "assets/*",
   "blocks/*",
@@ -28,8 +25,6 @@ ignore = [
 
 [environments.build]
 store = "stickergoblin.myshopify.com"
-theme = "185237799218"
-allow-live = true
 ignore = [
   "config/settings_data.json",
   "templates/*.json",
