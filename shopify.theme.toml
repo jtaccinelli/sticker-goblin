@@ -1,0 +1,36 @@
+# Shopify Theme CLI configuration
+# Run all commands from repo root with: shopify theme push --path theme/ --environment <env>
+#
+# Environments:
+#   all     - push every file
+#   content - push only JSON data files (settings_data.json, template configs)
+#   build   - push only code files (liquid, assets, locales, schema)
+
+[environments.all]
+store = "stickergoblin.myshopify.com"
+theme = "185237799218"
+allow-live = true
+
+[environments.content]
+store = "stickergoblin.myshopify.com"
+theme = "185237799218"
+allow-live = true
+ignore = [
+  "assets/*",
+  "blocks/*",
+  "layout/*",
+  "locales/*",
+  "sections/*",
+  "snippets/*",
+  "config/settings_schema.json",
+  "templates/*.liquid",
+]
+
+[environments.build]
+store = "stickergoblin.myshopify.com"
+theme = "185237799218"
+allow-live = true
+ignore = [
+  "config/settings_data.json",
+  "templates/*.json",
+]
