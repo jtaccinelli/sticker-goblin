@@ -1,0 +1,178 @@
+
+{%- liquid
+  assign artist_name        = metaobject.name.value
+  assign artist_city        = metaobject.city.value
+  assign artist_blurb       = metaobject.blurb.value
+  assign artist_headshot    = metaobject.headshot.value
+  assign artist_portfolio   = metaobject.portfolio_link.value
+  assign artist_instagram   = metaobject.instagram_link.value
+-%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="section page-width-content color-{{ section.settings.color_scheme }}">
+  <div
+    class="
+      spacing-style
+      artist-page
+    "
+    style="
+      {% render 'spacing-style', settings: section.settings %}
+    "
+  >
+
+    {%- if artist_headshot != blank -%}
+      <div class="artist-page__headshot">
+        {{
+          artist_headshot
+          | image_url: width: 600
+          | image_tag:
+            alt: artist_name,
+            loading: 'lazy',
+            widths: '300, 400, 600',
+            sizes: '(min-width: 768px) 300px, 100vw'
+        }}
+      </div>
+    {%- endif -%}
+
+    <div class="artist-page__info">
+
+      {%- if artist_name != blank -%}
+        <h1 class="artist-page__name">{{ artist_name }}</h1>
+      {%- endif -%}
+
+      {%- if artist_city != blank -%}
+        <p class="artist-page__city">{{ artist_city }}</p>
+      {%- endif -%}
+
+      {%- if artist_blurb != blank -%}
+        <div class="artist-page__blurb">{{ artist_blurb }}</div>
+      {%- endif -%}
+
+      {%- if artist_portfolio != blank or artist_instagram != blank -%}
+        <ul class="artist-page__links" role="list">
+          {%- if artist_portfolio != blank -%}
+            <li>
+              <a href="{{ artist_portfolio }}" target="_blank" rel="noopener noreferrer">
+                Portfolio
+              </a>
+            </li>
+          {%- endif -%}
+          {%- if artist_instagram != blank -%}
+            <li>
+              <a href="{{ artist_instagram }}" target="_blank" rel="noopener noreferrer">
+                Instagram
+              </a>
+            </li>
+          {%- endif -%}
+        </ul>
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .artist-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap-2xl);
+    padding-block: var(--padding-3xl);
+  }
+
+  @media (min-width: 768px) {
+    .artist-page {
+      grid-template-columns: 300px 1fr;
+      align-items: start;
+    }
+  }
+
+  .artist-page__headshot {
+    border-radius: var(--border-radius-md, 8px);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+  }
+
+  .artist-page__headshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .artist-page__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-md);
+  }
+
+  .artist-page__name {
+    margin: 0;
+  }
+
+  .artist-page__city {
+    margin: 0;
+    opacity: 0.6;
+  }
+
+  .artist-page__blurb {
+    max-width: 65ch;
+  }
+
+  .artist-page__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .artist-page__links a {
+    color: var(--color-foreground);
+    text-underline-offset: 3px;
+  }
+
+  .artist-page__links a:hover {
+    opacity: 0.7;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Artist",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    }
+  ]
+}
+{% endschema %}

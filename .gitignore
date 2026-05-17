@@ -1,3 +1,4 @@
 # Content files — managed via Shopify theme editor, not tracked in git
 theme/config/settings_data.json
 theme/templates/*.json
+theme/sections/*-group.json
