@@ -1,0 +1,120 @@
+
+{%- liquid
+  assign product = closest.product
+  assign artist  = product.metafields.relation.artist.value
+-%}
+
+{%- if artist != blank -%}
+  {%- liquid
+    assign artist_name       = artist.name.value
+    assign artist_headshot   = artist.headshot.value
+    assign artist_url        = artist.url.value 
+    assign artist_label      = 'content.featured_artist' | t
+  -%}
+
+  <div
+    class="featured-artist spacing-style"
+    style="{% render 'spacing-style', settings: block.settings %}"
+    {{ block.shopify_attributes }}
+  >
+    <div class="featured-artist__inner">
+      {%- if artist_headshot != blank -%}
+        {%- content_for 'block', id: 'headshot', type: '_product-featured-artist-headshot', artist_headshot: artist_headshot, artist_name: artist_name -%}
+      {%- endif -%}
+      <div class="featured-artist__info">
+        {%- content_for 'block', id: 'label', type: '_heading', text: artist_label -%}
+        {%- if artist_name != blank -%}
+          {%- content_for 'block', id: 'name', type: '_heading', text: artist_name -%}
+        {%- endif -%}
+        {%- if artist_url != blank -%}
+          {%- content_for 'block', id: 'link', type: '_product-featured-artist-link', artist_url: artist_url -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .featured-artist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+    width: 100%;
+    font-size: var(--font-paragraph--size);
+    line-height: var(--font-paragraph--line-height);
+    font-family: var(--font-paragraph--family);
+    font-weight: var(--font-paragraph--weight);
+  }
+
+  .featured-artist__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-md);
+  }
+
+  .featured-artist__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2xs);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_featured_artist",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_featured_artist",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

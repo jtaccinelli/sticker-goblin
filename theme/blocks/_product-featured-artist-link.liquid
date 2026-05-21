@@ -1,0 +1,22 @@
+
+{% doc %}
+  Renders the artist profile link.
+  @param {string} artist_url - The URL to the artist's profile
+{% enddoc %}
+
+<a class="featured-artist__link" href="{{ artist_url }}">{{ 'content.view_artist' | t }}</a>
+
+{% stylesheet %}
+  .featured-artist__link {
+    font-size: smaller;
+    color: var(--color-foreground);
+    text-underline-offset: 3px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_featured_artist_link",
+  "settings": []
+}
+{% endschema %}
